@@ -1,0 +1,4 @@
+playwright
+behave
+allure-behave
+pytest
