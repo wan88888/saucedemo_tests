@@ -1,16 +1,15 @@
 from pages.base_page import BasePage
-from utils.constants import CLASS_SELECTORS
 
 class CartPage(BasePage):
     def __init__(self, page):
         super().__init__(page)
-        self.cart_items = page.locator(CLASS_SELECTORS['cart_item'])
+        self.cart_items = page.locator('[data-test="inventory-item"]')
         self.checkout_button = page.locator("#checkout")
         self.continue_shopping_button = page.locator("#continue-shopping")
         self.remove_buttons = page.locator("button[id^='remove']")
-        self.item_names = page.locator(CLASS_SELECTORS['inventory_item_name'])
+        self.item_names = page.locator('.inventory_item_name')
         self.item_prices = page.locator(".inventory_item_price")
-        self.cart_badge = page.locator(CLASS_SELECTORS['cart_badge'])
+        self.cart_badge = page.locator('.shopping_cart_badge')
         
     def get_cart_items_count(self):
         """Get the number of items in the cart"""

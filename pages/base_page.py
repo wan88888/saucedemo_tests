@@ -1,6 +1,4 @@
 from playwright.sync_api import Page
-from utils.constants import SCREENSHOTS_DIR
-import os
 
 class BasePage:
     def __init__(self, page: Page):
@@ -10,10 +8,18 @@ class BasePage:
         """Navigate to the specified URL."""
         self.page.goto(url)
 
-    def take_screenshot(self, step_name):
-        """Take a screenshot and save it with the given step name."""
-        # Ensure screenshots directory exists
-        os.makedirs(SCREENSHOTS_DIR, exist_ok=True)
-        screenshot_path = f"{SCREENSHOTS_DIR}/{step_name}.png"
-        self.page.screenshot(path=screenshot_path)
-        return screenshot_path
+    def find_element(self, selector):
+        """Find an element by selector."""
+        return self.page.locator(selector)
+
+    def click(self, selector):
+        """Click on an element."""
+        self.find_element(selector).click()
+
+    def fill(self, selector, text):
+        """Fill an input field with text."""
+        self.find_element(selector).fill(text)
+
+    def get_text(self, selector):
+        """Get the text content of an element."""
+        return self.find_element(selector).text_content()

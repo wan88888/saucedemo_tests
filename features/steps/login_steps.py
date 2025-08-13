@@ -2,8 +2,6 @@ from behave import given, when, then
 from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
 from utils.constants import BASE_URL, STANDARD_USER, STANDARD_PASSWORD
-from utils.step_helpers import verify_inventory_page_loaded
-import allure
 
 @given("the user is on the SauceDemo login page")
 def step_impl(context):
@@ -17,4 +15,4 @@ def step_impl(context):
 @then("they should be redirected to the inventory page")
 def step_impl(context):
     context.inventory_page = InventoryPage(context.page)
-    verify_inventory_page_loaded(context.page)
+    assert "inventory" in context.page.url, "Should be redirected to inventory page"

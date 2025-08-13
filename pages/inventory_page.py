@@ -1,14 +1,13 @@
 from pages.base_page import BasePage
-from utils.constants import CLASS_SELECTORS
 
 class InventoryPage(BasePage):
     def __init__(self, page):
         super().__init__(page)
         self.add_to_cart_button = page.locator("button[id^='add-to-cart']")
         self.cart_icon = page.locator("#shopping_cart_container")
-        self.cart_badge = page.locator(CLASS_SELECTORS['cart_badge'])
-        self.inventory_items = page.locator(CLASS_SELECTORS['inventory_item'])
-        self.item_names = page.locator(CLASS_SELECTORS['inventory_item_name'])
+        self.cart_badge = page.locator('.shopping_cart_badge')
+        self.inventory_items = page.locator('.inventory_item')
+        self.item_names = page.locator('.inventory_item_name')
 
     def add_first_item_to_cart(self):
         """Add the first available item to cart."""
