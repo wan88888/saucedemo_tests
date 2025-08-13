@@ -1,5 +1,5 @@
 # URLs
-BASE_URL = "https://www.saucedemo.com/"
+BASE_URL = "https://www.saucedemo.com"
 
 # Credentials
 STANDARD_USER = "standard_user"

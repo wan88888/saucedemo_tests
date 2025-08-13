@@ -15,7 +15,10 @@ class InventoryPage(BasePage):
 
     def add_item_to_cart_by_index(self, index=0):
         """Add item to cart by index."""
-        self.add_to_cart_button.nth(index).click()
+        if index == 0:
+            self.add_first_item_to_cart()
+        else:
+            self.add_to_cart_button.nth(index).click()
 
     def go_to_cart(self):
         """Navigate to the shopping cart."""
